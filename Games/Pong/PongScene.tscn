@@ -1,0 +1,108 @@
+[gd_scene load_steps=10 format=3 uid="uid://muisvw84hkps"]
+
+[ext_resource type="Theme" uid="uid://crbj4swg706ru" path="res://Themes/ScoreTheme.tres" id="1_dqb7k"]
+[ext_resource type="PackedScene" uid="uid://dsqfsnh0uc0wd" path="res://Games/Pong/Paddle.tscn" id="1_qycv2"]
+[ext_resource type="FontVariation" uid="uid://cr7koqinrj71t" path="res://Fonts/PixelFont.tres" id="1_rih22"]
+[ext_resource type="PackedScene" uid="uid://bs77gmqt6s41e" path="res://Games/Pong/PongStats.tscn" id="2_s1bib"]
+[ext_resource type="PackedScene" uid="uid://c3ertsse67qsm" path="res://Commons/SolidWall.tscn" id="3_b4nsl"]
+[ext_resource type="PackedScene" uid="uid://ci5j1phtm3oof" path="res://Games/Pong/Ball.tscn" id="4_vnev6"]
+[ext_resource type="PackedScene" uid="uid://cd4yb20vhji2d" path="res://Games/Pong/ScoreArea.tscn" id="5_n8yys"]
+[ext_resource type="PackedScene" uid="uid://duxjebmx8lux2" path="res://Games/Pong/PongRestarter.tscn" id="6_qxjkd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j5wt0"]
+size = Vector2(193, 1147)
+
+[node name="PongScene" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="StartLabel" type="Label" parent="CanvasLayer"]
+offset_left = 768.0
+offset_top = 410.0
+offset_right = 1208.0
+offset_bottom = 495.0
+theme = ExtResource("1_dqb7k")
+theme_override_fonts/font = ExtResource("1_rih22")
+theme_override_font_sizes/font_size = 20
+text = "Press \"Enter\" to Start"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player1Score" type="Label" parent="CanvasLayer"]
+offset_left = 393.0
+offset_top = 132.0
+offset_right = 493.0
+offset_bottom = 232.0
+theme = ExtResource("1_dqb7k")
+theme_override_fonts/font = ExtResource("1_rih22")
+text = "0
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player2Score" type="Label" parent="CanvasLayer"]
+offset_left = 1527.0
+offset_top = 132.0
+offset_right = 1627.0
+offset_bottom = 232.0
+theme = ExtResource("1_dqb7k")
+theme_override_fonts/font = ExtResource("1_rih22")
+text = "0
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player1" parent="." instance=ExtResource("1_qycv2")]
+process_mode = 4
+up = "Up"
+down = "Down"
+
+[node name="Player2" parent="." instance=ExtResource("1_qycv2")]
+process_mode = 4
+position = Vector2(1820, 540)
+rotation = 3.14159
+up = "Up2"
+down = "Down2"
+
+[node name="PongStats" parent="." node_paths=PackedStringArray("player1ScoreLabel", "player2ScoreLabel", "restartLabel", "ball") instance=ExtResource("2_s1bib")]
+scale = Vector2(5.90225, 2.96503)
+player1ScoreLabel = NodePath("../CanvasLayer/Player1Score")
+player2ScoreLabel = NodePath("../CanvasLayer/Player2Score")
+restartLabel = NodePath("../CanvasLayer/StartLabel")
+ball = NodePath("../Ball")
+
+[node name="SolidWall" parent="." instance=ExtResource("3_b4nsl")]
+position = Vector2(1002, -14)
+scale = Vector2(108, 1)
+
+[node name="SolidWall2" parent="." instance=ExtResource("3_b4nsl")]
+position = Vector2(942, 1091)
+scale = Vector2(108, 1)
+
+[node name="Ball" parent="." instance=ExtResource("4_vnev6")]
+process_mode = 4
+position = Vector2(960, 540)
+
+[node name="PlayerScore" parent="." instance=ExtResource("5_n8yys")]
+position = Vector2(-83, 635)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerScore"]
+position = Vector2(-14.5, -108.5)
+shape = SubResource("RectangleShape2D_j5wt0")
+
+[node name="PlayerScore2" parent="." instance=ExtResource("5_n8yys")]
+position = Vector2(2035, 635)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerScore2"]
+position = Vector2(-14.5, -108.5)
+shape = SubResource("RectangleShape2D_j5wt0")
+
+[node name="PongRestarter" parent="." node_paths=PackedStringArray("player1", "player2", "ball", "startLabel") instance=ExtResource("6_qxjkd")]
+process_mode = 3
+player1 = NodePath("../Player1")
+player2 = NodePath("../Player2")
+ball = NodePath("../Ball")
+startLabel = NodePath("../CanvasLayer/StartLabel")
+
+[connection signal="area_entered" from="PlayerScore" to="PongStats" method="OnPlayer2ScoreAreaAreaEntered"]
+[connection signal="area_entered" from="PlayerScore2" to="PongStats" method="OnPlayer2ScoreAreaAreaEntered"]

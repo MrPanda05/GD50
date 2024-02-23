@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://538h5qhictln"]
+
+[ext_resource type="Script" path="res://Games/Pong/PaddleInputHandler.cs" id="1_j6idh"]
+
+[node name="PaddleInputHandler" type="Node2D"]
+script = ExtResource("1_j6idh")

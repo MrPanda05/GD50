@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://duxjebmx8lux2"]
+
+[ext_resource type="Script" path="res://Games/Pong/PongRestarter.cs" id="1_c8ult"]
+
+[node name="PongRestarter" type="Node2D"]
+script = ExtResource("1_c8ult")

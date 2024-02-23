@@ -1,95 +1,36 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1708635091
-README.md::TextFile::-1::1708635036::0::1::::<><>::
-::res://Assets/::1708635036
-::res://Assets/Breakout/::1708635036
-::res://Assets/Breakout/Art/::1708635075
-BG.png::CompressedTexture2D::3396058208658389972::1708635036::1708635075::1::::<><>::
-paddle.png::CompressedTexture2D::347789508021655288::1708635036::1708635075::1::::<><>::
-::res://Assets/Breakout/Prefab/::1708635036
-::res://Assets/Breakout/Scripts/::1708635036
-BrickSpawner.cs::CSharpScript::-1::1708635036::0::1::::<><>::
-ChangeState.cs::CSharpScript::-1::1708635036::0::1::::<><>::
-Player.cs::CSharpScript::-1::1708635036::0::1::::<><>::
-SMBreakout.cs::CSharpScript::-1::1708635036::0::1::::<><>::
-StartSelectButtonUI.cs::CSharpScript::-1::1708635036::0::1::::<><>::
-State.cs::CSharpScript::-1::1708635036::0::1::::<><>::
-UImethods.cs::CSharpScript::-1::1708635036::0::1::::<><>::
-::res://Assets/Breakout/Scripts/States/::1708635036
-GameOverState.cs::CSharpScript::-1::1708635036::0::1::::<><>::
-HighScoreState.cs::CSharpScript::-1::1708635036::0::1::::<><>::
-PaddleSelect.cs::CSharpScript::-1::1708635036::0::1::::<><>::
-PlayState.cs::CSharpScript::-1::1708635036::0::1::::<><>::
-ServeState.cs::CSharpScript::-1::1708635036::0::1::::<><>::
-StartState.cs::CSharpScript::-1::1708635036::0::1::::<><>::
-::res://Assets/Editor/::1708635036
-EditorTest.cs::CSharpScript::-1::1708635036::0::1::::<><>::
-::res://Assets/FlappyBird/::1708635076
-BirdCanvas.cs::CSharpScript::-1::1708635036::0::1::::<><>::
-BirdStateMachine.cs::CSharpScript::-1::1708635036::0::1::::<><>::
-BronzeMedal.png::CompressedTexture2D::392721663857661869::1708635036::1708635075::1::::<><>::
-CoolDown.cs::CSharpScript::-1::1708635036::0::1::::<><>::
-Dali1.jpg::CompressedTexture2D::8790939190457025175::1708635036::1708635075::1::::<><>::
-Dali2.jpg::CompressedTexture2D::127553744828366703::1708635036::1708635075::1::::<><>::
-Dali3.jpg::CompressedTexture2D::8936756342340110027::1708635036::1708635075::1::::<><>::
-Dali4.jpg::CompressedTexture2D::57484678479148160::1708635036::1708635075::1::::<><>::
-Dali.cs::CSharpScript::-1::1708635036::0::1::::<><>::
-DeletePipesOnReset.cs::CSharpScript::-1::1708635036::0::1::::<><>::
-explosion.wav::AudioStreamWAV::7032709813513101308::1708635036::1708635075::1::::<><>::
-FlappyBirdbg.png::CompressedTexture2D::8692261286025547302::1708635036::1708635075::1::::<><>::
-FlappyDali.wav::AudioStreamWAV::4132752034912776706::1708635036::1708635076::1::::<><>::
-GoldMedal.png::CompressedTexture2D::8167303006995970999::1708635036::1708635075::1::::<><>::
-Ground.png::CompressedTexture2D::6434715333582558474::1708635036::1708635075::1::::<><>::
-jump.wav::AudioStreamWAV::8725129489091476603::1708635036::1708635075::1::::<><>::
-NoMedal.png::CompressedTexture2D::7763699813911373264::1708635036::1708635075::1::::<><>::
-Paralax.cs::CSharpScript::-1::1708635036::0::1::::<><>::
-PauseGame.cs::CSharpScript::-1::1708635036::0::1::::<><>::
-pickupCoin.wav::AudioStreamWAV::7679700131790846416::1708635036::1708635075::1::::<><>::
-Pipe.cs::CSharpScript::-1::1708635036::0::1::::<><>::
-Pipe.png::CompressedTexture2D::6923266019948741974::1708635036::1708635075::1::::<><>::
-PipeColi.cs::CSharpScript::-1::1708635036::0::1::::<><>::
-PipeSpawner.cs::CSharpScript::-1::1708635036::0::1::::<><>::
-PipeTrigg.cs::CSharpScript::-1::1708635036::0::1::::<><>::
-PlayerKill.cs::CSharpScript::-1::1708635036::0::1::::<><>::
-PlayerStats.cs::CSharpScript::-1::1708635036::0::1::::<><>::
-RandoSkin.cs::CSharpScript::-1::1708635036::0::1::::<><>::
-ScoreUpdate.cs::CSharpScript::-1::1708635036::0::1::::<><>::
-SilverMedal.png::CompressedTexture2D::4197861719791635000::1708635036::1708635075::1::::<><>::
-SoundPlay.cs::CSharpScript::-1::1708635036::0::1::::<><>::
-synth.wav::AudioStreamWAV::5185476049020134679::1708635036::1708635075::1::::<><>::
-::res://Assets/Menu/::1708635036
-MenuMethods.cs::CSharpScript::-1::1708635036::0::1::::<><>::
-::res://Assets/Pong/::1708635075
-Ball.cs::CSharpScript::-1::1708635036::0::1::::<><>::
-bruh-sound-effect-2-37927.mp3::AudioStreamMP3::8100611764656873062::1708635036::1708635075::1::::<><>::
-Dalunciu.png::::-1::0::0::0::::<><>::
-floopa glass.png::CompressedTexture2D::2072283848418658695::1708635036::1708635075::1::::<><>::
-GameStats.cs::CSharpScript::-1::1708635036::0::1::::<><>::
-oh-my-god-meme.mp3::AudioStreamMP3::509556517497269135::1708635036::1708635075::1::::<><>::
-PaddleAI.cs::CSharpScript::-1::1708635036::0::1::::<><>::
-PaddleMovement.cs::CSharpScript::-1::1708635036::0::1::::<><>::
-ScoreText.cs::CSharpScript::-1::1708635036::0::1::::<><>::
-StateMachine.cs::CSharpScript::-1::1708635036::0::1::::<><>::
-::res://Assets/Settings/::1708635036
-::res://Assets/Settings/Scenes/::1708635036
-::res://Assets/TextMesh Pro/::1708635036
-::res://Assets/TextMesh Pro/Documentation/::1708635036
-::res://Assets/TextMesh Pro/Fonts/::1708635075
-LiberationSans - OFL.txt::TextFile::-1::1708635036::0::1::::<><>::
-LiberationSans.ttf::FontFile::2206475746614103548::1708635036::1708635075::1::::<><>::
-::res://Assets/TextMesh Pro/Resources/::1708635036
-LineBreaking Following Characters.txt::TextFile::-1::1708635036::0::1::::<><>::
-LineBreaking Leading Characters.txt::TextFile::-1::1708635036::0::1::::<><>::
-::res://Assets/TextMesh Pro/Resources/Fonts & Materials/::1708635036
-::res://Assets/TextMesh Pro/Resources/Sprite Assets/::1708635036
-::res://Assets/TextMesh Pro/Resources/Style Sheets/::1708635036
-::res://Assets/TextMesh Pro/Shaders/::1708635036
-::res://Assets/TextMesh Pro/Sprites/::1708635075
-EmojiOne Attribution.txt::TextFile::-1::1708635036::0::1::::<><>::
-EmojiOne.json::JSON::-1::1708635036::0::1::::<><>::
-EmojiOne.png::CompressedTexture2D::4151970871915331536::1708635036::1708635075::1::::<><>::
-::res://Assets/Thaleah_PixelFont/::1708635036
-::res://Assets/Thaleah_PixelFont/Materials/::1708635075
-ThaleahFat.png::CompressedTexture2D::486065864959129567::1708635036::1708635075::1::::<><>::
-ThaleahFat_TTF.ttf::FontFile::4780606842538238954::1708635036::1708635075::1::::<><>::
-Thaleah_DemoBackground.png::CompressedTexture2D::2057270842360711175::1708635036::1708635075::1::::<><>::
+::res://::1708663625
+default_bus_layout.tres::AudioBusLayout::2496985894232611230::1708658569::0::1::::<><>::
+icon.svg::CompressedTexture2D::1710432843154048703::1708645766::1708645775::1::::<><>::
+README.md::TextFile::-1::1708635795::0::1::::<><>::
+::res://Commons/::1708661858
+SolidWall.tscn::PackedScene::6747453592679797920::1708661858::0::1::::<><>::
+::res://Commons/Components/::1708663612
+HealthComponent.cs::CSharpScript::-1::1708646531::0::1::::<>Node2D<>::
+HealthComponent.tscn::PackedScene::1680031746735236896::1708663612::0::1::::<><>::res://Commons/Components/HealthComponent.cs
+HitboxComponent.cs::CSharpScript::-1::1708646199::0::1::::<>Area2D<>::
+HitboxComponent.tscn::PackedScene::4106588989721005265::1708663612::0::1::::<><>::res://Commons/Components/HitboxComponent.cs
+::res://Commons/FSM/::1708659500
+::res://Commons/Singletons/::1708659507
+::res://Fonts/::1708658471
+PixelFont.tres::FontVariation::6032744821750806143::1708658471::0::1::::<><>::uid://bl6s75gywi2r6::::res://Fonts/PressStart2P.ttf
+PressStart2P.ttf::FontFile::3223645311451589997::1708658440::1708658443::1::::<><>::
+::res://Games/::1708652805
+::res://Games/Pong/::1708663613
+Ball.tscn::PackedScene::5396877132232989273::1708663613::0::1::::<><>::uid://byri6kkos6lrl::::res://Commons/Components/HitboxComponent.tscn<>uid://djc8s63ngt7yg::::res://Games/Pong/Art/Ball.png
+Paddle.cs::CSharpScript::-1::1708661269::0::1::::<>CharacterBody2D<>::
+Paddle.tscn::PackedScene::8456027704662866307::1708663613::0::1::::<><>::res://Games/Pong/Paddle.cs<>uid://byri6kkos6lrl::::res://Commons/Components/HitboxComponent.tscn<>uid://cinfv47v8dekr::::res://Games/Pong/Art/PaddleSprite.png<>uid://538h5qhictln::::res://Games/Pong/PaddleInputHandler.tscn
+PaddleInputHandler.cs::CSharpScript::-1::1708661091::0::1::::<>Node2D<>::
+PaddleInputHandler.tscn::PackedScene::2165485648319487423::1708661288::0::1::::<><>::res://Games/Pong/PaddleInputHandler.cs
+PongScene.tscn::PackedScene::884072697484464096::1708663613::0::1::::<><>::uid://dsqfsnh0uc0wd::::res://Games/Pong/Paddle.tscn<>uid://bs77gmqt6s41e::::res://Games/Pong/PongStats.tscn<>uid://c3ertsse67qsm::::res://Commons/SolidWall.tscn<>uid://ci5j1phtm3oof::::res://Games/Pong/Ball.tscn
+PongStats.cs::CSharpScript::-1::1708661604::0::1::::<>Node2D<>::
+PongStats.tscn::PackedScene::3717834271742066764::1708663613::0::1::::<><>::res://Games/Pong/PongStats.cs
+::res://Games/Pong/Art/::1708659777
+Ball.png::CompressedTexture2D::7797127876459136846::1708659768::1708659777::1::::<><>::
+PaddleSprite.png::CompressedTexture2D::5361531687538334781::1708659741::1708659777::1::::<><>::
+::res://Games/Pong/Music/::1708658553
+::res://Games/Pong/SoundFX/::1708658545
+::res://MainMenuScenes/::1708663612
+MainMenu.tscn::PackedScene::2394603938137057311::1708663612::0::1::::<><>::
+::res://Properties/::1708646063
+launchSettings.json::JSON::-1::1708646077::0::1::::<><>::

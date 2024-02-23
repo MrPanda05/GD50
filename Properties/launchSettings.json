@@ -1,0 +1,14 @@
+{
+  "profiles": {
+    "GD50": {
+      "commandName": "Project"
+    },
+    "Profile 1": {
+      "commandName": "Executable",
+      "executablePath": "C:\\Users\\Adelar\\Desktop\\Uso\\GODOT\\Godot.exe",
+      "commandLineArgs": "--path.--verbose",
+      "workingDirectory": ".",
+      "nativeDebugging": true
+    }
+  }
+}
