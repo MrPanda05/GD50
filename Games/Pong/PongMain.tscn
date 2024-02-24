@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://4vf8o5hk4kbc"]
+
+[ext_resource type="PackedScene" uid="uid://cv5ao5covv6w4" path="res://Games/Pong/UI/PongMainMenu.tscn" id="1_78th5"]
+[ext_resource type="PackedScene" uid="uid://muisvw84hkps" path="res://Games/Pong/PongScene.tscn" id="1_phvwv"]
+[ext_resource type="PackedScene" uid="uid://bsgl4jgyw27wi" path="res://Games/Pong/UI/PongPause.tscn" id="2_dgi0l"]
+
+[node name="PongMain" type="Node2D"]
+
+[node name="PongMainMenu" parent="." node_paths=PackedStringArray("PongScene") instance=ExtResource("1_78th5")]
+PongScene = NodePath("../PongScene")
+
+[node name="PongScene" parent="." instance=ExtResource("1_phvwv")]
+process_mode = 4
+visible = false
+
+[node name="PongPause" parent="." instance=ExtResource("2_dgi0l")]
+visible = false

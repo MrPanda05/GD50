@@ -32,7 +32,13 @@ namespace Pong
         {
             ball.ResetBall();
         }
-
+        public void RestartScore()
+        {
+            player1Points = 0;
+            player2Points = 0;
+            player1ScoreLabel.Text = "0";
+            player2ScoreLabel.Text = "0";
+        }
 
         //Change both areas,since this repeat, it will work for now
         public void OnPlayer2ScoreAreaAreaEntered(Area2D area)
@@ -70,6 +76,7 @@ namespace Pong
         public override void _Ready()
         {
             timer = GetNode<Timer>("Timer");
+            PongRestarter.OnRestart += RestartScore;
         }
     }
 }

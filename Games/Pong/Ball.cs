@@ -19,9 +19,9 @@ namespace Pong
             if (collision != null)
             {
                 vel = vel.Bounce(collision.GetNormal());
-                vel.X *= 1.1f;
-                vel.Y *= 1.1f;
-                vel = new Vector2(Mathf.Clamp(vel.X, -2000, 2000f), Mathf.Clamp(vel.Y, -2000, 2000f));
+                vel.X *= (float)GD.RandRange(1.05f, 1.1f);
+                vel.Y *= (float)GD.RandRange(1.05f, 1.1f);
+                vel = new Vector2(Mathf.Clamp(vel.X, -3000, 3000f), Mathf.Clamp(vel.Y, -3000, 3000f));
             }
         }
 
@@ -29,14 +29,15 @@ namespace Pong
         {
             Position = new Vector2(1920/2, 1080/2);
             vel = Velocity;
-            vel = GD.Randf() > 0.5f ? new Vector2(ballSpeed, (float)GD.RandRange(-ballSpeed / 2, ballSpeed / 2)) : new Vector2(-ballSpeed, -(float)GD.RandRange(-ballSpeed / 2, ballSpeed / 2));
+            vel = GD.Randf() > 0.5f ? new Vector2(ballSpeed, (float)GD.RandRange(-ballSpeed, ballSpeed)) : new Vector2(-ballSpeed, -(float)GD.RandRange(-ballSpeed, ballSpeed));
         }
 
 
         public override void _Ready()
         {
             vel = Velocity;
-            vel = GD.Randf() > 0.5f ? new Vector2(ballSpeed, (float)GD.RandRange(-ballSpeed / 2, ballSpeed / 2)) : new Vector2(-ballSpeed, -(float)GD.RandRange(-ballSpeed / 2, ballSpeed / 2));
+            vel = GD.Randf() > 0.5f ? new Vector2(ballSpeed, (float)GD.RandRange(-ballSpeed, ballSpeed)) : new Vector2(-ballSpeed, -(float)GD.RandRange(-ballSpeed, ballSpeed));
+            PongRestarter.OnRestart += ResetBall;
         }
 
         public override void _PhysicsProcess(double delta)

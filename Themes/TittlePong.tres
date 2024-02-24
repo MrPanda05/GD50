@@ -1,0 +1,8 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://q5sw5may3jac"]
+
+[ext_resource type="FontVariation" uid="uid://cr7koqinrj71t" path="res://Fonts/PixelFont.tres" id="1_gc3y6"]
+
+[resource]
+default_font = ExtResource("1_gc3y6")
+Label/font_sizes/font_size = 125
+Label/fonts/font = ExtResource("1_gc3y6")

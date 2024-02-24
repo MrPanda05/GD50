@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://duy8cn0crq6xc"]
+
+[ext_resource type="Script" path="res://Games/Pong/Tests/Test.cs" id="1_lqykw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l84ld"]
+
+[node name="Test" type="StaticBody2D"]
+script = ExtResource("1_lqykw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_l84ld")

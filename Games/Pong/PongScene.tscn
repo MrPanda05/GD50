@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://muisvw84hkps"]
+[gd_scene load_steps=11 format=3 uid="uid://muisvw84hkps"]
 
 [ext_resource type="Theme" uid="uid://crbj4swg706ru" path="res://Themes/ScoreTheme.tres" id="1_dqb7k"]
+[ext_resource type="PackedScene" uid="uid://d0a51e42kh107" path="res://Games/Pong/SetPong.tscn" id="1_jctvw"]
 [ext_resource type="PackedScene" uid="uid://dsqfsnh0uc0wd" path="res://Games/Pong/Paddle.tscn" id="1_qycv2"]
 [ext_resource type="FontVariation" uid="uid://cr7koqinrj71t" path="res://Fonts/PixelFont.tres" id="1_rih22"]
 [ext_resource type="PackedScene" uid="uid://bs77gmqt6s41e" path="res://Games/Pong/PongStats.tscn" id="2_s1bib"]
@@ -14,9 +15,18 @@ size = Vector2(193, 1147)
 
 [node name="PongScene" type="Node2D"]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="SetPong" parent="." node_paths=PackedStringArray("player1", "player2", "stats") instance=ExtResource("1_jctvw")]
+player1 = NodePath("../Player1")
+player2 = NodePath("../Player2")
+stats = NodePath("../PongStats")
 
-[node name="StartLabel" type="Label" parent="CanvasLayer"]
+[node name="BgColor" type="ColorRect" parent="."]
+offset_left = -57.0
+offset_right = 2034.0
+offset_bottom = 1112.0
+color = Color(0.0980392, 0.188235, 0.364706, 1)
+
+[node name="StartLabel" type="Label" parent="."]
 offset_left = 768.0
 offset_top = 410.0
 offset_right = 1208.0
@@ -28,10 +38,10 @@ text = "Press \"Enter\" to Start"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player1Score" type="Label" parent="CanvasLayer"]
-offset_left = 393.0
+[node name="Player1Score" type="Label" parent="."]
+offset_left = 302.0
 offset_top = 132.0
-offset_right = 493.0
+offset_right = 402.0
 offset_bottom = 232.0
 theme = ExtResource("1_dqb7k")
 theme_override_fonts/font = ExtResource("1_rih22")
@@ -40,7 +50,7 @@ text = "0
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player2Score" type="Label" parent="CanvasLayer"]
+[node name="Player2Score" type="Label" parent="."]
 offset_left = 1527.0
 offset_top = 132.0
 offset_right = 1627.0
@@ -54,6 +64,10 @@ vertical_alignment = 1
 
 [node name="Player1" parent="." instance=ExtResource("1_qycv2")]
 process_mode = 4
+position = Vector2(101, 540)
+paddleMinY = 1080.0
+paddleMinX = 100.0
+paddleMaxX = 100.0
 up = "Up"
 down = "Down"
 
@@ -61,14 +75,17 @@ down = "Down"
 process_mode = 4
 position = Vector2(1820, 540)
 rotation = 3.14159
+paddleMinY = 1080.0
+paddleMinX = 1820.0
+paddleMaxX = 1820.0
 up = "Up2"
 down = "Down2"
 
 [node name="PongStats" parent="." node_paths=PackedStringArray("player1ScoreLabel", "player2ScoreLabel", "restartLabel", "ball") instance=ExtResource("2_s1bib")]
 scale = Vector2(5.90225, 2.96503)
-player1ScoreLabel = NodePath("../CanvasLayer/Player1Score")
-player2ScoreLabel = NodePath("../CanvasLayer/Player2Score")
-restartLabel = NodePath("../CanvasLayer/StartLabel")
+player1ScoreLabel = NodePath("../Player1Score")
+player2ScoreLabel = NodePath("../Player2Score")
+restartLabel = NodePath("../StartLabel")
 ball = NodePath("../Ball")
 
 [node name="SolidWall" parent="." instance=ExtResource("3_b4nsl")]
@@ -102,7 +119,7 @@ process_mode = 3
 player1 = NodePath("../Player1")
 player2 = NodePath("../Player2")
 ball = NodePath("../Ball")
-startLabel = NodePath("../CanvasLayer/StartLabel")
+startLabel = NodePath("../StartLabel")
 
 [connection signal="area_entered" from="PlayerScore" to="PongStats" method="OnPlayer2ScoreAreaAreaEntered"]
 [connection signal="area_entered" from="PlayerScore2" to="PongStats" method="OnPlayer2ScoreAreaAreaEntered"]

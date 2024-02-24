@@ -1,0 +1,105 @@
+[gd_scene load_steps=6 format=3 uid="uid://cv5ao5covv6w4"]
+
+[ext_resource type="Theme" uid="uid://q5sw5may3jac" path="res://Themes/TittlePong.tres" id="1_7pek8"]
+[ext_resource type="Script" path="res://Games/Pong/UI/PongMainMenu.cs" id="1_485m2"]
+[ext_resource type="Theme" uid="uid://cr23f74qgudcj" path="res://Themes/PongButtons.tres" id="2_nyj17"]
+[ext_resource type="Theme" uid="uid://bj1vgvbwrlwxo" path="res://Themes/PongOptionsButton.tres" id="4_jyqqb"]
+[ext_resource type="Theme" uid="uid://cttypnivjbtj7" path="res://Themes/CheckButtonPong.tres" id="5_fkkbt"]
+
+[node name="PongMainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_485m2")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -928.0
+offset_top = -480.0
+offset_right = 2760.0
+offset_bottom = 1536.0
+color = Color(0.0470588, 0.301961, 0.231373, 1)
+
+[node name="Tittle" type="Label" parent="."]
+layout_mode = 0
+offset_left = 618.0
+offset_top = 112.0
+offset_right = 1368.0
+offset_bottom = 262.0
+theme = ExtResource("1_7pek8")
+text = "Bingus
+Pong!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Play" type="Button" parent="."]
+layout_mode = 0
+offset_left = 808.0
+offset_top = 584.0
+offset_right = 1090.0
+offset_bottom = 668.0
+theme = ExtResource("2_nyj17")
+text = "Play"
+
+[node name="Settings" type="Button" parent="."]
+layout_mode = 0
+offset_left = 808.0
+offset_top = 752.0
+offset_right = 1090.0
+offset_bottom = 836.0
+theme = ExtResource("2_nyj17")
+text = "Settings"
+
+[node name="Quit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 664.0
+offset_top = 920.0
+offset_right = 946.0
+offset_bottom = 1004.0
+theme = ExtResource("2_nyj17")
+text = "Quit
+"
+
+[node name="Return" type="Button" parent="."]
+layout_mode = 0
+offset_left = 976.0
+offset_top = 920.0
+offset_right = 1258.0
+offset_bottom = 1004.0
+theme = ExtResource("2_nyj17")
+text = "Return"
+
+[node name="OptionButton" type="OptionButton" parent="."]
+layout_mode = 0
+offset_left = 1152.0
+offset_top = 592.0
+offset_right = 1360.0
+offset_bottom = 648.0
+theme = ExtResource("4_jyqqb")
+alignment = 1
+item_count = 3
+selected = 0
+allow_reselect = true
+popup/item_0/text = "PVP"
+popup/item_0/id = 0
+popup/item_1/text = "Vs AI"
+popup/item_1/id = 1
+popup/item_2/text = "AI VS AI"
+popup/item_2/id = 2
+
+[node name="CheckButton" type="CheckButton" parent="."]
+layout_mode = 0
+offset_left = 1176.0
+offset_top = 552.0
+offset_right = 1336.0
+offset_bottom = 583.0
+theme = ExtResource("5_fkkbt")
+text = "Endless"
+alignment = 1
+
+[connection signal="button_down" from="Play" to="." method="OnPlayButtonDown"]
+[connection signal="item_selected" from="OptionButton" to="." method="OnOptionButtonItemSelected"]
+[connection signal="toggled" from="CheckButton" to="." method="OnCheckButtonToggled"]

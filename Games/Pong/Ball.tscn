@@ -1,8 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://ci5j1phtm3oof"]
+[gd_scene load_steps=8 format=3 uid="uid://ci5j1phtm3oof"]
 
 [ext_resource type="PackedScene" uid="uid://byri6kkos6lrl" path="res://Commons/Components/HitboxComponent.tscn" id="1_6ecng"]
 [ext_resource type="Script" path="res://Games/Pong/Ball.cs" id="1_igg7o"]
 [ext_resource type="Texture2D" uid="uid://djc8s63ngt7yg" path="res://Games/Pong/Art/Ball.png" id="2_8hnpj"]
+
+[sub_resource type="Gradient" id="Gradient_aroa1"]
+offsets = PackedFloat32Array(0, 0.842657)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hcp7g"]
+gradient = SubResource("Gradient_aroa1")
+fill = 1
+fill_from = Vector2(0.482906, 0.487179)
+fill_to = Vector2(0.863248, 0.0940171)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mctmn"]
 radius = 14.0357
@@ -13,7 +23,12 @@ radius = 14.0357
 [node name="Ball" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 15
+platform_on_leave = 2
 script = ExtResource("1_igg7o")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0.898039, 0.886275, 0, 1)
+texture = SubResource("GradientTexture2D_hcp7g")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(2, 2)

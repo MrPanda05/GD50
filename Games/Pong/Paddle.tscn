@@ -1,9 +1,20 @@
-[gd_scene load_steps=7 format=3 uid="uid://dsqfsnh0uc0wd"]
+[gd_scene load_steps=9 format=3 uid="uid://dsqfsnh0uc0wd"]
 
 [ext_resource type="Script" path="res://Games/Pong/Paddle.cs" id="1_5k5bi"]
 [ext_resource type="PackedScene" uid="uid://byri6kkos6lrl" path="res://Commons/Components/HitboxComponent.tscn" id="1_238cb"]
 [ext_resource type="Texture2D" uid="uid://cinfv47v8dekr" path="res://Games/Pong/Art/PaddleSprite.png" id="2_ahsq0"]
 [ext_resource type="PackedScene" uid="uid://538h5qhictln" path="res://Games/Pong/PaddleInputHandler.tscn" id="2_li22w"]
+
+[sub_resource type="Gradient" id="Gradient_cju2i"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4dgk3"]
+gradient = SubResource("Gradient_cju2i")
+width = 128
+height = 128
+fill = 2
+fill_from = Vector2(0.474359, 0.508547)
+fill_to = Vector2(0.538462, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mavfx"]
 size = Vector2(10, 31.8)
@@ -16,8 +27,15 @@ position = Vector2(100, 540)
 scale = Vector2(2, 5)
 collision_layer = 3
 collision_mask = 4
+platform_on_leave = 2
 script = ExtResource("1_5k5bi")
-paddleSpeed = 800.0
+paddleSpeed = 1000.0
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(2.38419e-07, 0.300001)
+scale = Vector2(0.203125, 0.314062)
+color = Color(0.8, 0.235294, 0.815686, 1)
+texture = SubResource("GradientTexture2D_4dgk3")
 
 [node name="PaddleInputHandler" parent="." instance=ExtResource("2_li22w")]
 
@@ -27,7 +45,6 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 position = Vector2(0, -0.0999985)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_mavfx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -35,5 +52,4 @@ texture = ExtResource("2_ahsq0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(4.9, 0)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_0ja0m")

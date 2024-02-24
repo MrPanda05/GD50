@@ -9,11 +9,13 @@ namespace Pong
         [ExportGroup("Objects")]
         [Export] private CharacterBody2D player1, player2, ball;
         [Export] private Label startLabel;
+        private Control PauseMenu;
 
-        public void RestartGame()
-        {
-            GetTree().ReloadCurrentScene();
-        }
+        public static Action OnRestart;
+        //public void RestartGame()
+        //{
+        //    GetTree().ReloadCurrentScene();
+        //}
         public void PauseGame()
         {
             GetTree().Paused = !GetTree().Paused;
@@ -32,7 +34,11 @@ namespace Pong
             }
             if (Input.IsActionJustPressed("Restart"))
             {
-                RestartGame();
+                OnRestart?.Invoke();
+                ball.ProcessMode = ProcessModeEnum.Disabled;
+                player1.ProcessMode = ProcessModeEnum.Disabled;
+                player2.ProcessMode = ProcessModeEnum.Disabled;
+                startLabel.Visible = true;
                 return;
             }
             if (Input.IsActionJustPressed("Pause"))
@@ -42,9 +48,14 @@ namespace Pong
             }
             if (Input.IsActionJustPressed("Menu"))
             {
-                //Add later
+                PauseGame();
+                PauseMenu.Visible = !PauseMenu.Visible;
                 return;
             }
+        }
+        public override void _Ready()
+        {
+            PauseMenu = GetNode<Control>("../../PongPause");
         }
     }
 }
