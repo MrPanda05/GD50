@@ -1,10 +1,8 @@
 using Godot;
-using System;
-using Commons.Components;
 
 
 namespace Pong
-{ 
+{
     public partial class Paddle : CharacterBody2D
     {
         [ExportGroup("Paddle propreties")]
@@ -70,6 +68,11 @@ namespace Pong
             startPos = Position;
             if (!isBot) PaddleInputHandler = GetNode<PaddleInputHandler>("PaddleInputHandler");
             PongRestarter.OnRestart += Restart;
+        }
+
+        public override void _ExitTree()
+        {
+            PongRestarter.OnRestart -= Restart;
         }
 
         public override void _PhysicsProcess(double delta)

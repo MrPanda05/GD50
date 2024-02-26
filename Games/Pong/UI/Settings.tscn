@@ -1,0 +1,221 @@
+[gd_scene load_steps=9 format=3 uid="uid://b2nm28ynm53hl"]
+
+[ext_resource type="Theme" uid="uid://q5sw5may3jac" path="res://Games/Pong/UI/PongThemes/TittlePong.tres" id="1_a85r1"]
+[ext_resource type="Script" path="res://Games/Pong/UI/Settings.cs" id="1_f5lws"]
+[ext_resource type="Material" uid="uid://y1jjtr3c73bv" path="res://Themes/UnshadedUI.tres" id="1_xqu8g"]
+[ext_resource type="Theme" uid="uid://crbj4swg706ru" path="res://Games/Pong/UI/PongThemes/ScoreTheme.tres" id="2_d1tyb"]
+[ext_resource type="Theme" uid="uid://c77m65c2wtih8" path="res://Games/Pong/UI/PongThemes/SliderPong.tres" id="3_d5cph"]
+[ext_resource type="Theme" uid="uid://cr23f74qgudcj" path="res://Games/Pong/UI/PongThemes/PongButtons.tres" id="4_hyg3m"]
+[ext_resource type="AudioStream" uid="uid://da522jrgdpqru" path="res://Games/Pong/SoundFX/click.wav" id="4_x7fjg"]
+[ext_resource type="Theme" uid="uid://cnt0w4yo3gefb" path="res://Games/Pong/UI/PongThemes/PanelPong.tres" id="8_gd3r5"]
+
+[node name="Settings" type="Control"]
+material = ExtResource("1_xqu8g")
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_f5lws")
+
+[node name="BG" type="ColorRect" parent="."]
+use_parent_material = true
+layout_mode = 0
+offset_left = -256.0
+offset_top = -160.0
+offset_right = 2088.0
+offset_bottom = 1336.0
+color = Color(0.0470588, 0.301961, 0.231373, 1)
+
+[node name="Settings" type="Label" parent="."]
+use_parent_material = true
+layout_mode = 0
+offset_left = 472.0
+offset_top = 128.0
+offset_right = 1472.0
+offset_bottom = 253.0
+theme = ExtResource("1_a85r1")
+text = "Settings
+"
+
+[node name="Volume" type="Label" parent="."]
+use_parent_material = true
+layout_mode = 0
+offset_left = 320.0
+offset_top = 512.0
+offset_right = 576.0
+offset_bottom = 592.0
+theme = ExtResource("2_d1tyb")
+text = "Volume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Controls" type="Label" parent="."]
+use_parent_material = true
+layout_mode = 0
+offset_left = 1288.0
+offset_top = 512.0
+offset_right = 1696.0
+offset_bottom = 592.0
+theme = ExtResource("2_d1tyb")
+text = "Controls
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="p1" type="Label" parent="."]
+use_parent_material = true
+layout_mode = 0
+offset_left = 1280.0
+offset_top = 696.0
+offset_right = 1408.0
+offset_bottom = 776.0
+theme = ExtResource("2_d1tyb")
+text = "P1
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="p2" type="Label" parent="."]
+use_parent_material = true
+layout_mode = 0
+offset_left = 1544.0
+offset_top = 696.0
+offset_right = 1672.0
+offset_bottom = 776.0
+theme = ExtResource("2_d1tyb")
+text = "P2
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VolumeSlider" type="Control" parent="."]
+use_parent_material = true
+layout_mode = 1
+anchors_preset = 0
+offset_left = 128.0
+offset_top = 576.0
+offset_right = 768.0
+offset_bottom = 1080.0
+
+[node name="MasterLabel" type="Label" parent="VolumeSlider"]
+use_parent_material = true
+layout_mode = 0
+offset_left = 296.0
+offset_top = 104.0
+offset_right = 353.0
+offset_bottom = 144.0
+theme = ExtResource("2_d1tyb")
+theme_override_font_sizes/font_size = 19
+text = "All"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SoundLabel" type="Label" parent="VolumeSlider"]
+use_parent_material = true
+layout_mode = 0
+offset_left = 256.0
+offset_top = 232.0
+offset_right = 389.0
+offset_bottom = 272.0
+theme = ExtResource("2_d1tyb")
+theme_override_font_sizes/font_size = 19
+text = "SoundFX"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MusicLabel" type="Label" parent="VolumeSlider"]
+use_parent_material = true
+layout_mode = 0
+offset_left = 256.0
+offset_top = 368.0
+offset_right = 389.0
+offset_bottom = 408.0
+theme = ExtResource("2_d1tyb")
+theme_override_font_sizes/font_size = 19
+text = "Music"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Master" type="HSlider" parent="VolumeSlider"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 128.0
+offset_right = 576.0
+offset_bottom = 192.0
+theme = ExtResource("3_d5cph")
+value = 25.0
+
+[node name="SoundFX" type="HSlider" parent="VolumeSlider"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 256.0
+offset_right = 576.0
+offset_bottom = 320.0
+theme = ExtResource("3_d5cph")
+value = 25.0
+
+[node name="Music" type="HSlider" parent="VolumeSlider"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 384.0
+offset_right = 576.0
+offset_bottom = 448.0
+theme = ExtResource("3_d5cph")
+value = 25.0
+
+[node name="Return" type="Button" parent="."]
+use_parent_material = true
+layout_mode = 0
+offset_left = 880.0
+offset_top = 984.0
+offset_right = 1104.0
+offset_bottom = 1056.0
+theme = ExtResource("4_hyg3m")
+text = "Return"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_x7fjg")
+bus = &"SoundFX"
+
+[node name="ControlsP1" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 1264.0
+offset_top = 792.0
+offset_right = 1448.0
+offset_bottom = 848.0
+theme = ExtResource("8_gd3r5")
+
+[node name="Label" type="Label" parent="ControlsP1"]
+layout_mode = 0
+offset_right = 168.0
+offset_bottom = 56.0
+theme = ExtResource("2_d1tyb")
+theme_override_font_sizes/font_size = 14
+text = "W - Move up
+S - Move down"
+vertical_alignment = 1
+
+[node name="ControlsP2" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 1520.0
+offset_top = 792.0
+offset_right = 1704.0
+offset_bottom = 848.0
+theme = ExtResource("8_gd3r5")
+
+[node name="Label" type="Label" parent="ControlsP2"]
+layout_mode = 0
+offset_right = 168.0
+offset_bottom = 56.0
+theme = ExtResource("2_d1tyb")
+theme_override_font_sizes/font_size = 14
+text = "↑ - Move up
+↓ - Move down"
+vertical_alignment = 1
+
+[connection signal="value_changed" from="VolumeSlider/Master" to="." method="OnMasterValueChanged"]
+[connection signal="value_changed" from="VolumeSlider/SoundFX" to="." method="OnSoundFxValueChanged"]
+[connection signal="value_changed" from="VolumeSlider/Music" to="." method="OnMusicValueChanged"]
+[connection signal="button_down" from="Return" to="." method="OnReturnButtonDown"]

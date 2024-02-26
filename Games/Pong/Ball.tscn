@@ -1,8 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://ci5j1phtm3oof"]
+[gd_scene load_steps=12 format=3 uid="uid://ci5j1phtm3oof"]
 
 [ext_resource type="PackedScene" uid="uid://byri6kkos6lrl" path="res://Commons/Components/HitboxComponent.tscn" id="1_6ecng"]
 [ext_resource type="Script" path="res://Games/Pong/Ball.cs" id="1_igg7o"]
 [ext_resource type="Texture2D" uid="uid://djc8s63ngt7yg" path="res://Games/Pong/Art/Ball.png" id="2_8hnpj"]
+[ext_resource type="PackedScene" uid="uid://b183upwckv83j" path="res://Commons/Components/SoundPool.tscn" id="2_nuunx"]
+[ext_resource type="AudioStream" uid="uid://dk6qa73qtgfo2" path="res://Games/Pong/SoundFX/Hit1.wav" id="3_cp4yg"]
+[ext_resource type="AudioStream" uid="uid://c82pb216c2u8m" path="res://Games/Pong/SoundFX/Hit2.wav" id="5_srh68"]
+[ext_resource type="AudioStream" uid="uid://cejmf5wl36k57" path="res://Games/Pong/SoundFX/Hit3.wav" id="6_hchsy"]
 
 [sub_resource type="Gradient" id="Gradient_aroa1"]
 offsets = PackedFloat32Array(0, 0.842657)
@@ -25,6 +29,23 @@ collision_layer = 4
 collision_mask = 15
 platform_on_leave = 2
 script = ExtResource("1_igg7o")
+
+[node name="SoundPool" parent="." instance=ExtResource("2_nuunx")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="SoundPool"]
+stream = ExtResource("3_cp4yg")
+max_polyphony = 2
+bus = &"SoundFX"
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="SoundPool"]
+stream = ExtResource("5_srh68")
+max_polyphony = 2
+bus = &"SoundFX"
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="SoundPool"]
+stream = ExtResource("6_hchsy")
+max_polyphony = 2
+bus = &"SoundFX"
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 color = Color(0.898039, 0.886275, 0, 1)

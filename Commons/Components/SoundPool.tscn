@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b183upwckv83j"]
+
+[ext_resource type="Script" path="res://Commons/Components/SoundPool.cs" id="1_gbbsv"]
+
+[node name="SoundPool" type="Node"]
+script = ExtResource("1_gbbsv")

@@ -1,3 +1,4 @@
+using Commons.Components;
 using Godot;
 using System;
 
@@ -18,6 +19,8 @@ namespace Pong
         [ExportGroup("Objects")]
         [Export] private Label player1ScoreLabel, player2ScoreLabel, restartLabel;
         [Export] private Ball ball;
+
+        private AudioStreamPlayer sound1, sound2;
 
         public void OnScoreUpdate()
         {
@@ -40,17 +43,18 @@ namespace Pong
             player2ScoreLabel.Text = "0";
         }
 
-        //Change both areas,since this repeat, it will work for now
         public void OnPlayer2ScoreAreaAreaEntered(Area2D area)
         {
-            if(area.GetParent().GetNode<CharacterBody2D>(".").Velocity.X < 0)
+            if (area.GetParent().GetNode<CharacterBody2D>(".").Velocity.X < 0)
             {
                 GD.Print("Player 2 score");
                 player2Points++;
+                sound1.Play();
             }
             else
             {
                 GD.Print("Player 1 score");
+                sound2.Play();
                 player1Points++;
             }
             OnScoreUpdate();
@@ -76,6 +80,8 @@ namespace Pong
         public override void _Ready()
         {
             timer = GetNode<Timer>("Timer");
+            sound1 = GetNode<AudioStreamPlayer>("AudioStreamPlayer1");
+            sound2 = GetNode<AudioStreamPlayer>("AudioStreamPlayer2");
             PongRestarter.OnRestart += RestartScore;
         }
     }

@@ -1,61 +1,81 @@
-[gd_scene load_steps=3 format=3 uid="uid://bsgl4jgyw27wi"]
+[gd_scene load_steps=6 format=3 uid="uid://bsgl4jgyw27wi"]
 
-[ext_resource type="Theme" uid="uid://q5sw5may3jac" path="res://Themes/TittlePong.tres" id="1_t0dbg"]
-[ext_resource type="Theme" uid="uid://cr23f74qgudcj" path="res://Themes/PongButtons.tres" id="2_s1olo"]
+[ext_resource type="Script" path="res://Games/Pong/UI/PongPause.cs" id="1_0w2xq"]
+[ext_resource type="Material" uid="uid://y1jjtr3c73bv" path="res://Themes/UnshadedUI.tres" id="1_75ko5"]
+[ext_resource type="Theme" uid="uid://cr23f74qgudcj" path="res://Games/Pong/UI/PongThemes/PongButtons.tres" id="3_1urid"]
+[ext_resource type="Theme" uid="uid://q5sw5may3jac" path="res://Games/Pong/UI/PongThemes/TittlePong.tres" id="3_5ase2"]
+[ext_resource type="AudioStream" uid="uid://da522jrgdpqru" path="res://Games/Pong/SoundFX/click.wav" id="4_7cgoi"]
 
 [node name="PongPause" type="Control"]
 process_mode = 3
+material = ExtResource("1_75ko5")
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_0w2xq")
 
 [node name="Paused" type="Label" parent="."]
+use_parent_material = true
 layout_mode = 0
 offset_left = 588.0
 offset_top = 128.0
 offset_right = 1338.0
 offset_bottom = 253.0
-theme = ExtResource("1_t0dbg")
+theme = ExtResource("3_5ase2")
 text = "Paused"
 
 [node name="Restart" type="Button" parent="."]
+use_parent_material = true
 layout_mode = 0
 offset_left = 808.0
 offset_top = 512.0
 offset_right = 1080.0
 offset_bottom = 598.0
-theme = ExtResource("2_s1olo")
+theme = ExtResource("3_1urid")
 text = "Restart"
 
 [node name="Settings" type="Button" parent="."]
+use_parent_material = true
 layout_mode = 0
 offset_left = 808.0
 offset_top = 680.0
 offset_right = 1080.0
 offset_bottom = 766.0
-theme = ExtResource("2_s1olo")
+theme = ExtResource("3_1urid")
 text = "Settings
 "
 
 [node name="Quit" type="Button" parent="."]
+use_parent_material = true
 layout_mode = 0
 offset_left = 656.0
 offset_top = 888.0
 offset_right = 928.0
 offset_bottom = 974.0
-theme = ExtResource("2_s1olo")
+theme = ExtResource("3_1urid")
 text = "Quit
 "
 
 [node name="Menu" type="Button" parent="."]
+use_parent_material = true
 layout_mode = 0
 offset_left = 984.0
 offset_top = 888.0
 offset_right = 1256.0
 offset_bottom = 974.0
-theme = ExtResource("2_s1olo")
+theme = ExtResource("3_1urid")
 text = "Menu
 "
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_7cgoi")
+max_polyphony = 3
+bus = &"SoundFX"
+
+[connection signal="button_down" from="Restart" to="." method="OnRestartButtonDown"]
+[connection signal="button_down" from="Settings" to="." method="OnSettingsButtonDown"]
+[connection signal="button_down" from="Quit" to="." method="OnQuitButtonDown"]
+[connection signal="button_down" from="Menu" to="." method="OnMenuButtonDown"]

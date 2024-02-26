@@ -1,12 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://cv5ao5covv6w4"]
+[gd_scene load_steps=9 format=3 uid="uid://cv5ao5covv6w4"]
 
-[ext_resource type="Theme" uid="uid://q5sw5may3jac" path="res://Themes/TittlePong.tres" id="1_7pek8"]
 [ext_resource type="Script" path="res://Games/Pong/UI/PongMainMenu.cs" id="1_485m2"]
-[ext_resource type="Theme" uid="uid://cr23f74qgudcj" path="res://Themes/PongButtons.tres" id="2_nyj17"]
-[ext_resource type="Theme" uid="uid://bj1vgvbwrlwxo" path="res://Themes/PongOptionsButton.tres" id="4_jyqqb"]
-[ext_resource type="Theme" uid="uid://cttypnivjbtj7" path="res://Themes/CheckButtonPong.tres" id="5_fkkbt"]
+[ext_resource type="Material" uid="uid://y1jjtr3c73bv" path="res://Themes/UnshadedUI.tres" id="1_ujv4e"]
+[ext_resource type="Theme" uid="uid://q5sw5may3jac" path="res://Games/Pong/UI/PongThemes/TittlePong.tres" id="2_ce76x"]
+[ext_resource type="PackedScene" uid="uid://b2nm28ynm53hl" path="res://Games/Pong/UI/Settings.tscn" id="2_jsqm7"]
+[ext_resource type="Theme" uid="uid://cr23f74qgudcj" path="res://Games/Pong/UI/PongThemes/PongButtons.tres" id="3_ds14d"]
+[ext_resource type="Theme" uid="uid://bj1vgvbwrlwxo" path="res://Games/Pong/UI/PongThemes/PongOptionsButton.tres" id="4_cn2af"]
+[ext_resource type="Theme" uid="uid://cttypnivjbtj7" path="res://Games/Pong/UI/PongThemes/CheckButtonPong.tres" id="5_sv44f"]
+[ext_resource type="AudioStream" uid="uid://da522jrgdpqru" path="res://Games/Pong/SoundFX/click.wav" id="9_q62bk"]
 
-[node name="PongMainMenu" type="Control"]
+[node name="PongMainMenu" type="Control" node_paths=PackedStringArray("settings")]
+material = ExtResource("1_ujv4e")
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,8 +18,26 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_485m2")
+settings = NodePath("SettingsUI/Settings")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="SettingsUI" type="Control" parent="."]
+material = ExtResource("1_ujv4e")
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Settings" parent="SettingsUI" node_paths=PackedStringArray("node") instance=ExtResource("2_jsqm7")]
+visible = false
+layout_mode = 1
+node = NodePath("../../Menu")
+
+[node name="Menu" type="Control" parent="."]
+material = ExtResource("1_ujv4e")
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Menu"]
 layout_mode = 0
 offset_left = -928.0
 offset_top = -480.0
@@ -23,62 +45,62 @@ offset_right = 2760.0
 offset_bottom = 1536.0
 color = Color(0.0470588, 0.301961, 0.231373, 1)
 
-[node name="Tittle" type="Label" parent="."]
+[node name="Tittle" type="Label" parent="Menu"]
 layout_mode = 0
 offset_left = 618.0
 offset_top = 112.0
 offset_right = 1368.0
-offset_bottom = 262.0
-theme = ExtResource("1_7pek8")
+offset_bottom = 365.0
+theme = ExtResource("2_ce76x")
 text = "Bingus
 Pong!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Play" type="Button" parent="."]
+[node name="Play" type="Button" parent="Menu"]
 layout_mode = 0
 offset_left = 808.0
 offset_top = 584.0
 offset_right = 1090.0
 offset_bottom = 668.0
-theme = ExtResource("2_nyj17")
+theme = ExtResource("3_ds14d")
 text = "Play"
 
-[node name="Settings" type="Button" parent="."]
+[node name="Settings" type="Button" parent="Menu"]
 layout_mode = 0
 offset_left = 808.0
 offset_top = 752.0
 offset_right = 1090.0
 offset_bottom = 836.0
-theme = ExtResource("2_nyj17")
+theme = ExtResource("3_ds14d")
 text = "Settings"
 
-[node name="Quit" type="Button" parent="."]
+[node name="Quit" type="Button" parent="Menu"]
 layout_mode = 0
 offset_left = 664.0
 offset_top = 920.0
 offset_right = 946.0
 offset_bottom = 1004.0
-theme = ExtResource("2_nyj17")
+theme = ExtResource("3_ds14d")
 text = "Quit
 "
 
-[node name="Return" type="Button" parent="."]
+[node name="Return" type="Button" parent="Menu"]
 layout_mode = 0
 offset_left = 976.0
 offset_top = 920.0
 offset_right = 1258.0
 offset_bottom = 1004.0
-theme = ExtResource("2_nyj17")
+theme = ExtResource("3_ds14d")
 text = "Return"
 
-[node name="OptionButton" type="OptionButton" parent="."]
+[node name="OptionButton" type="OptionButton" parent="Menu"]
 layout_mode = 0
 offset_left = 1152.0
 offset_top = 592.0
 offset_right = 1360.0
 offset_bottom = 648.0
-theme = ExtResource("4_jyqqb")
+theme = ExtResource("4_cn2af")
 alignment = 1
 item_count = 3
 selected = 0
@@ -90,16 +112,23 @@ popup/item_1/id = 1
 popup/item_2/text = "AI VS AI"
 popup/item_2/id = 2
 
-[node name="CheckButton" type="CheckButton" parent="."]
+[node name="CheckButton" type="CheckButton" parent="Menu"]
 layout_mode = 0
 offset_left = 1176.0
 offset_top = 552.0
 offset_right = 1336.0
 offset_bottom = 583.0
-theme = ExtResource("5_fkkbt")
+theme = ExtResource("5_sv44f")
 text = "Endless"
 alignment = 1
 
-[connection signal="button_down" from="Play" to="." method="OnPlayButtonDown"]
-[connection signal="item_selected" from="OptionButton" to="." method="OnOptionButtonItemSelected"]
-[connection signal="toggled" from="CheckButton" to="." method="OnCheckButtonToggled"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_q62bk")
+max_polyphony = 3
+bus = &"SoundFX"
+
+[connection signal="button_down" from="Menu/Play" to="." method="OnPlayButtonDown"]
+[connection signal="button_down" from="Menu/Settings" to="." method="OnSettingsButtonDown"]
+[connection signal="button_down" from="Menu/Quit" to="." method="OnQuitButtonDown"]
+[connection signal="item_selected" from="Menu/OptionButton" to="." method="OnOptionButtonItemSelected"]
+[connection signal="toggled" from="Menu/CheckButton" to="." method="OnCheckButtonToggled"]

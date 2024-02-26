@@ -1,6 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://muisvw84hkps"]
+[gd_scene load_steps=16 format=3 uid="uid://muisvw84hkps"]
 
-[ext_resource type="Theme" uid="uid://crbj4swg706ru" path="res://Themes/ScoreTheme.tres" id="1_dqb7k"]
+[ext_resource type="Theme" uid="uid://crbj4swg706ru" path="res://Games/Pong/UI/PongThemes/ScoreTheme.tres" id="1_4dchc"]
 [ext_resource type="PackedScene" uid="uid://d0a51e42kh107" path="res://Games/Pong/SetPong.tscn" id="1_jctvw"]
 [ext_resource type="PackedScene" uid="uid://dsqfsnh0uc0wd" path="res://Games/Pong/Paddle.tscn" id="1_qycv2"]
 [ext_resource type="FontVariation" uid="uid://cr7koqinrj71t" path="res://Fonts/PixelFont.tres" id="1_rih22"]
@@ -9,60 +9,73 @@
 [ext_resource type="PackedScene" uid="uid://ci5j1phtm3oof" path="res://Games/Pong/Ball.tscn" id="4_vnev6"]
 [ext_resource type="PackedScene" uid="uid://cd4yb20vhji2d" path="res://Games/Pong/ScoreArea.tscn" id="5_n8yys"]
 [ext_resource type="PackedScene" uid="uid://duxjebmx8lux2" path="res://Games/Pong/PongRestarter.tscn" id="6_qxjkd"]
+[ext_resource type="AudioStream" uid="uid://ddkdp1eh6k7dw" path="res://Games/Pong/SoundFX/ScorePoint.wav" id="7_a0rip"]
+[ext_resource type="AudioStream" uid="uid://bmsy530cql8dg" path="res://Games/Pong/SoundFX/ScorePoint2.wav" id="8_rf8ra"]
+[ext_resource type="Script" path="res://Games/Pong/UI/MENUS.cs" id="10_gdxk0"]
+[ext_resource type="PackedScene" uid="uid://bsgl4jgyw27wi" path="res://Games/Pong/UI/PongPause.tscn" id="10_mbjhq"]
+[ext_resource type="PackedScene" uid="uid://b2nm28ynm53hl" path="res://Games/Pong/UI/Settings.tscn" id="11_omg1r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j5wt0"]
 size = Vector2(193, 1147)
 
 [node name="PongScene" type="Node2D"]
 
-[node name="SetPong" parent="." node_paths=PackedStringArray("player1", "player2", "stats") instance=ExtResource("1_jctvw")]
-player1 = NodePath("../Player1")
-player2 = NodePath("../Player2")
-stats = NodePath("../PongStats")
+[node name="GAMEPLAY" type="Node2D" parent="."]
+editor_description = "This node holds the actual gameplay"
 
-[node name="BgColor" type="ColorRect" parent="."]
+[node name="GAMEPLAYUI" type="Node2D" parent="GAMEPLAY"]
+editor_description = "Holds UI that are dependent on gameplay"
+
+[node name="BgColor" type="ColorRect" parent="GAMEPLAY/GAMEPLAYUI"]
 offset_left = -57.0
 offset_right = 2034.0
 offset_bottom = 1112.0
-color = Color(0.0980392, 0.188235, 0.364706, 1)
+color = Color(0.113725, 0.133333, 0.137255, 1)
 
-[node name="StartLabel" type="Label" parent="."]
+[node name="StartLabel" type="Label" parent="GAMEPLAY/GAMEPLAYUI"]
 offset_left = 768.0
 offset_top = 410.0
 offset_right = 1208.0
 offset_bottom = 495.0
-theme = ExtResource("1_dqb7k")
+theme = ExtResource("1_4dchc")
 theme_override_fonts/font = ExtResource("1_rih22")
 theme_override_font_sizes/font_size = 20
 text = "Press \"Enter\" to Start"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player1Score" type="Label" parent="."]
+[node name="Player1Score" type="Label" parent="GAMEPLAY/GAMEPLAYUI"]
 offset_left = 302.0
 offset_top = 132.0
 offset_right = 402.0
 offset_bottom = 232.0
-theme = ExtResource("1_dqb7k")
+theme = ExtResource("1_4dchc")
 theme_override_fonts/font = ExtResource("1_rih22")
+theme_override_font_sizes/font_size = 100
 text = "0
 "
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player2Score" type="Label" parent="."]
+[node name="Player2Score" type="Label" parent="GAMEPLAY/GAMEPLAYUI"]
 offset_left = 1527.0
 offset_top = 132.0
 offset_right = 1627.0
 offset_bottom = 232.0
-theme = ExtResource("1_dqb7k")
+theme = ExtResource("1_4dchc")
 theme_override_fonts/font = ExtResource("1_rih22")
+theme_override_font_sizes/font_size = 100
 text = "0
 "
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player1" parent="." instance=ExtResource("1_qycv2")]
+[node name="SetPong" parent="GAMEPLAY" node_paths=PackedStringArray("player1", "player2", "stats") instance=ExtResource("1_jctvw")]
+player1 = NodePath("../Player1")
+player2 = NodePath("../Player2")
+stats = NodePath("../PongStats")
+
+[node name="Player1" parent="GAMEPLAY" instance=ExtResource("1_qycv2")]
 process_mode = 4
 position = Vector2(101, 540)
 paddleMinY = 1080.0
@@ -71,7 +84,7 @@ paddleMaxX = 100.0
 up = "Up"
 down = "Down"
 
-[node name="Player2" parent="." instance=ExtResource("1_qycv2")]
+[node name="Player2" parent="GAMEPLAY" instance=ExtResource("1_qycv2")]
 process_mode = 4
 position = Vector2(1820, 540)
 rotation = 3.14159
@@ -81,45 +94,69 @@ paddleMaxX = 1820.0
 up = "Up2"
 down = "Down2"
 
-[node name="PongStats" parent="." node_paths=PackedStringArray("player1ScoreLabel", "player2ScoreLabel", "restartLabel", "ball") instance=ExtResource("2_s1bib")]
+[node name="PongStats" parent="GAMEPLAY" node_paths=PackedStringArray("player1ScoreLabel", "player2ScoreLabel", "restartLabel", "ball") instance=ExtResource("2_s1bib")]
 scale = Vector2(5.90225, 2.96503)
-player1ScoreLabel = NodePath("../Player1Score")
-player2ScoreLabel = NodePath("../Player2Score")
-restartLabel = NodePath("../StartLabel")
+player1ScoreLabel = NodePath("../GAMEPLAYUI/Player1Score")
+player2ScoreLabel = NodePath("../GAMEPLAYUI/Player2Score")
+restartLabel = NodePath("../GAMEPLAYUI/StartLabel")
 ball = NodePath("../Ball")
 
-[node name="SolidWall" parent="." instance=ExtResource("3_b4nsl")]
+[node name="AudioStreamPlayer1" type="AudioStreamPlayer" parent="GAMEPLAY/PongStats"]
+stream = ExtResource("7_a0rip")
+bus = &"SoundFX"
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="GAMEPLAY/PongStats"]
+stream = ExtResource("8_rf8ra")
+bus = &"SoundFX"
+
+[node name="SolidWall" parent="GAMEPLAY" instance=ExtResource("3_b4nsl")]
 position = Vector2(1002, -14)
 scale = Vector2(108, 1)
 
-[node name="SolidWall2" parent="." instance=ExtResource("3_b4nsl")]
+[node name="SolidWall2" parent="GAMEPLAY" instance=ExtResource("3_b4nsl")]
 position = Vector2(942, 1091)
 scale = Vector2(108, 1)
 
-[node name="Ball" parent="." instance=ExtResource("4_vnev6")]
+[node name="Ball" parent="GAMEPLAY" instance=ExtResource("4_vnev6")]
 process_mode = 4
 position = Vector2(960, 540)
 
-[node name="PlayerScore" parent="." instance=ExtResource("5_n8yys")]
+[node name="PlayerScore" parent="GAMEPLAY" instance=ExtResource("5_n8yys")]
 position = Vector2(-83, 635)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerScore"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GAMEPLAY/PlayerScore"]
 position = Vector2(-14.5, -108.5)
 shape = SubResource("RectangleShape2D_j5wt0")
 
-[node name="PlayerScore2" parent="." instance=ExtResource("5_n8yys")]
+[node name="PlayerScore2" parent="GAMEPLAY" instance=ExtResource("5_n8yys")]
 position = Vector2(2035, 635)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerScore2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GAMEPLAY/PlayerScore2"]
 position = Vector2(-14.5, -108.5)
 shape = SubResource("RectangleShape2D_j5wt0")
 
-[node name="PongRestarter" parent="." node_paths=PackedStringArray("player1", "player2", "ball", "startLabel") instance=ExtResource("6_qxjkd")]
+[node name="PongRestarter" parent="GAMEPLAY" node_paths=PackedStringArray("player1", "player2", "ball", "startLabel") instance=ExtResource("6_qxjkd")]
 process_mode = 3
 player1 = NodePath("../Player1")
 player2 = NodePath("../Player2")
 ball = NodePath("../Ball")
-startLabel = NodePath("../StartLabel")
+startLabel = NodePath("../GAMEPLAYUI/StartLabel")
 
-[connection signal="area_entered" from="PlayerScore" to="PongStats" method="OnPlayer2ScoreAreaAreaEntered"]
-[connection signal="area_entered" from="PlayerScore2" to="PongStats" method="OnPlayer2ScoreAreaAreaEntered"]
+[node name="MENUS" type="Node2D" parent="." node_paths=PackedStringArray("Settings", "Pause")]
+editor_description = "This node holds all menus that independet of gameplay, for example, a pause menu"
+script = ExtResource("10_gdxk0")
+Settings = NodePath("Settings")
+Pause = NodePath("PongPause")
+
+[node name="PongPause" parent="MENUS" node_paths=PackedStringArray("settings", "restarter") instance=ExtResource("10_mbjhq")]
+visible = false
+settings = NodePath("../Settings")
+restarter = NodePath("../../GAMEPLAY/PongRestarter")
+
+[node name="Settings" parent="MENUS" node_paths=PackedStringArray("node") instance=ExtResource("11_omg1r")]
+process_mode = 3
+visible = false
+node = NodePath("../PongPause")
+
+[connection signal="area_entered" from="GAMEPLAY/PlayerScore" to="GAMEPLAY/PongStats" method="OnPlayer2ScoreAreaAreaEntered"]
+[connection signal="area_entered" from="GAMEPLAY/PlayerScore2" to="GAMEPLAY/PongStats" method="OnPlayer2ScoreAreaAreaEntered"]

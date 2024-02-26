@@ -14,8 +14,16 @@ config/name="GD50"
 config/version="1.0"
 config/tags=PackedStringArray("learning", "projects")
 run/main_scene="res://Games/Pong/PongMain.tscn"
+config/use_custom_user_dir=true
+config/custom_user_dir_name="ConfigsGD50"
 config/features=PackedStringArray("4.2", "C#", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+SaveSystem="*res://Commons/Singletons/SaveSystem.tscn"
+SoundManager="*res://Commons/Singletons/SoundManager.tscn"
+MusicManager="*res://Commons/Singletons/MusicManager.tscn"
 
 [display]
 

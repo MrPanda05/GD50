@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://comvnhipnmfh1"]
+
+[ext_resource type="Script" path="res://Resources/SaveData.cs" id="1_j6qmd"]
+
+[resource]
+script = ExtResource("1_j6qmd")
+masterVolume = 0.0
+soundFXVolume = 0.0
+musicVolume = 0.0

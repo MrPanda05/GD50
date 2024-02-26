@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbegap3wn6dtg"]
+
+[ext_resource type="Script" path="res://Commons/Singletons/SaveSystem.cs" id="1_3ab64"]
+
+[node name="SaveSystem" type="Node"]
+process_mode = 3
+script = ExtResource("1_3ab64")

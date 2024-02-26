@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using Commons.Components;
 
 
 namespace Pong
@@ -13,11 +14,14 @@ namespace Pong
 
         private KinematicCollision2D collision;
 
+        private SoundPool sound;
+
         public void Movement(float delta)
         {
             collision = MoveAndCollide(vel * delta);
             if (collision != null)
             {
+                sound.PlayRandomSound();
                 vel = vel.Bounce(collision.GetNormal());
                 vel.X *= (float)GD.RandRange(1.05f, 1.1f);
                 vel.Y *= (float)GD.RandRange(1.05f, 1.1f);
@@ -36,10 +40,15 @@ namespace Pong
         public override void _Ready()
         {
             vel = Velocity;
+            sound = GetNode<SoundPool>("SoundPool");
             vel = GD.Randf() > 0.5f ? new Vector2(ballSpeed, (float)GD.RandRange(-ballSpeed, ballSpeed)) : new Vector2(-ballSpeed, -(float)GD.RandRange(-ballSpeed, ballSpeed));
             PongRestarter.OnRestart += ResetBall;
         }
 
+        public override void _ExitTree()
+        {
+            PongRestarter.OnRestart -= ResetBall;
+        }
         public override void _PhysicsProcess(double delta)
         {
             Movement((float)delta);
