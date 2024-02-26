@@ -13,6 +13,8 @@ namespace Pong
 		private Slider masterSlider, soundSlider, musicSlider;
 
 		private AudioStreamPlayer sound;
+
+        public static Action OnUpdate;
 		public void OnReturnButtonDown()
 		{
 			Visible = false;
@@ -35,7 +37,12 @@ namespace Pong
 			masterSlider.Value = (double)SaveSystem.GetValue("masterVolume");
             soundSlider.Value = (double)SaveSystem.GetValue("soundFXVolume");
             musicSlider.Value = (double)SaveSystem.GetValue("musicVolume");
+            OnUpdate += MakeSure;
 
+        }
+        public override void _ExitTree()
+        {
+            OnUpdate -= MakeSure;
 
         }
         public float ScaleDecibels(float value)
@@ -44,20 +51,32 @@ namespace Pong
             float divisor = 50.0f;
             return scale * (float)Math.Log10(value / divisor);
         }
+        public void MakeSure()
+        {
+            masterSlider.Value = (double)SaveSystem.GetValue("masterVolume");
+            soundSlider.Value = (double)SaveSystem.GetValue("soundFXVolume");
+            musicSlider.Value = (double)SaveSystem.GetValue("musicVolume");
+        }
 		public void OnMasterValueChanged(float value)
 		{
 			SaveSystem.Update("masterVolume", Mathf.RoundToInt(value));
 			AudioServer.SetBusVolumeDb(0, ScaleDecibels(value));
-		}
+            OnUpdate?.Invoke();
+
+        }
         public void OnSoundFxValueChanged(float value)
         {
             SaveSystem.Update("soundFXVolume", Mathf.RoundToInt(value));
             AudioServer.SetBusVolumeDb(1, ScaleDecibels(value));
+            OnUpdate?.Invoke();
+
         }
         public void OnMusicValueChanged(float value)
         {
             SaveSystem.Update("musicVolume", Mathf.RoundToInt(value));
             AudioServer.SetBusVolumeDb(2, ScaleDecibels(value));
+            OnUpdate?.Invoke();
+
         }
     }
 }
