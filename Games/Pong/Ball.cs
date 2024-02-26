@@ -15,6 +15,7 @@ namespace Pong
         private KinematicCollision2D collision;
 
         private SoundPool sound;
+        public bool stop = false;
 
         public void Movement(float delta)
         {
@@ -31,6 +32,7 @@ namespace Pong
 
         public void ResetBall()
         {
+            stop = false;
             Position = new Vector2(1920/2, 1080/2);
             vel = Velocity;
             vel = GD.Randf() > 0.5f ? new Vector2(ballSpeed, (float)GD.RandRange(-ballSpeed, ballSpeed)) : new Vector2(-ballSpeed, -(float)GD.RandRange(-ballSpeed, ballSpeed));
@@ -51,6 +53,11 @@ namespace Pong
         }
         public override void _PhysicsProcess(double delta)
         {
+            if(stop)
+            {
+                Position = new Vector2(1920 / 2, 1080 / 2);
+                return;
+            }
             Movement((float)delta);
             Velocity = vel;
 

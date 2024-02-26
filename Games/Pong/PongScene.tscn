@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://muisvw84hkps"]
+[gd_scene load_steps=19 format=3 uid="uid://muisvw84hkps"]
 
 [ext_resource type="Theme" uid="uid://crbj4swg706ru" path="res://Games/Pong/UI/PongThemes/ScoreTheme.tres" id="1_4dchc"]
 [ext_resource type="PackedScene" uid="uid://d0a51e42kh107" path="res://Games/Pong/SetPong.tscn" id="1_jctvw"]
@@ -14,9 +14,19 @@
 [ext_resource type="Script" path="res://Games/Pong/UI/MENUS.cs" id="10_gdxk0"]
 [ext_resource type="PackedScene" uid="uid://bsgl4jgyw27wi" path="res://Games/Pong/UI/PongPause.tscn" id="10_mbjhq"]
 [ext_resource type="PackedScene" uid="uid://b2nm28ynm53hl" path="res://Games/Pong/UI/Settings.tscn" id="11_omg1r"]
+[ext_resource type="Texture2D" uid="uid://4l6gshk3scaj" path="res://Games/Pong/Art/bluesquare.png" id="12_dspye"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j5wt0"]
 size = Vector2(193, 1147)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4ks75"]
+texture = ExtResource("12_dspye")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_ufbvg"]
+tile_size = Vector2i(32, 32)
+sources/1 = SubResource("TileSetAtlasSource_4ks75")
 
 [node name="PongScene" type="Node2D"]
 
@@ -27,6 +37,7 @@ editor_description = "This node holds the actual gameplay"
 editor_description = "Holds UI that are dependent on gameplay"
 
 [node name="BgColor" type="ColorRect" parent="GAMEPLAY/GAMEPLAYUI"]
+z_index = -1
 offset_left = -57.0
 offset_right = 2034.0
 offset_bottom = 1112.0
@@ -141,6 +152,13 @@ player1 = NodePath("../Player1")
 player2 = NodePath("../Player2")
 ball = NodePath("../Ball")
 startLabel = NodePath("../GAMEPLAYUI/StartLabel")
+
+[node name="TileMap" type="TileMap" parent="GAMEPLAY"]
+tile_set = SubResource("TileSet_ufbvg")
+rendering_quadrant_size = 32
+format = 2
+layer_0/z_index = -1
+layer_0/tile_data = PackedInt32Array(29, 1, 0, 65566, 1, 0, 131101, 1, 0, 196638, 1, 0, 262173, 1, 0, 327710, 1, 0, 393245, 1, 0, 458782, 1, 0, 524317, 1, 0, 589854, 1, 0, 655389, 1, 0, 720926, 1, 0, 786461, 1, 0, 851998, 1, 0, 917533, 1, 0, 983070, 1, 0, 1048605, 1, 0, 1114142, 1, 0, 1179677, 1, 0, 1245214, 1, 0, 1310749, 1, 0, 1376286, 1, 0, 1441821, 1, 0, 1507358, 1, 0, 1572893, 1, 0, 1638430, 1, 0, 1703965, 1, 0, 1769502, 1, 0, 1835037, 1, 0, 1900574, 1, 0, 1966109, 1, 0, 2031646, 1, 0, 2097181, 1, 0, 2162718, 1, 0)
 
 [node name="MENUS" type="Node2D" parent="." node_paths=PackedStringArray("Settings", "Pause")]
 editor_description = "This node holds all menus that independet of gameplay, for example, a pause menu"

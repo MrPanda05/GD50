@@ -39,7 +39,7 @@ namespace Pong
 
         public override void _Process(double delta)
         {
-            if(Input.IsActionJustPressed("Start"))
+            if(Input.IsActionJustPressed("Start") && GetNode<Node2D>("../../").Visible)
             {
                 StartGame();
                 return;

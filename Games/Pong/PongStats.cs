@@ -62,16 +62,18 @@ namespace Pong
             {
                 if(player2Points >= maxPoints)
                 {
-                    GD.Print("Player 2 winns");
+                    GD.Print("Player 2 wins");
                     restartLabel.Text = "Player 2 wins! \n Press 'R' to restart";
                     restartLabel.Visible = true;
+                    ball.stop = true;
                     return;
                 }
                 if (player1Points >= maxPoints)
                 {
-                    GD.Print("Player 1 winns");
+                    GD.Print("Player 1 wins");
                     restartLabel.Text = "Player 1 wins! \n Press 'R' to restart";
                     restartLabel.Visible = true;
+                    ball.stop = true;
                     return;
                 }
             }
