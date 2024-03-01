@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvnp0wym3o3p1"]
+
+[ext_resource type="PackedScene" uid="uid://c3ertsse67qsm" path="res://Commons/SolidWall.tscn" id="1_u3kid"]
+[ext_resource type="PackedScene" uid="uid://ddkatq2gj4p4h" path="res://Games/FlappyBird/Birdo/Birdo.tscn" id="1_xy1xo"]
+
+[node name="FlappyBirdGame" type="Node2D"]
+
+[node name="GamePlay" type="Node2D" parent="."]
+
+[node name="SolidWall" parent="GamePlay" instance=ExtResource("1_u3kid")]
+position = Vector2(960, 1079)
+scale = Vector2(94.7607, 1)
+
+[node name="GameUI" type="Node2D" parent="GamePlay"]
+
+[node name="Birdo" parent="GamePlay" instance=ExtResource("1_xy1xo")]
+position = Vector2(888, 552)
+
+[node name="Menu" type="Node2D" parent="."]

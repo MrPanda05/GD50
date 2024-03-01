@@ -1,0 +1,42 @@
+[gd_scene load_steps=9 format=3 uid="uid://ddkatq2gj4p4h"]
+
+[ext_resource type="Script" path="res://Games/FlappyBird/Birdo/Birdo.cs" id="1_o6rv1"]
+[ext_resource type="PackedScene" uid="uid://byri6kkos6lrl" path="res://Commons/Components/HitboxComponent.tscn" id="1_tpqjw"]
+[ext_resource type="PackedScene" uid="uid://cihsxh283esp5" path="res://Commons/FSM/FSM.tscn" id="2_k5x2j"]
+[ext_resource type="Script" path="res://Games/FlappyBird/Birdo/BirdStates/BirdCountDownState.cs" id="3_iw6x0"]
+[ext_resource type="Script" path="res://Games/FlappyBird/Birdo/BirdoPlayState.cs" id="4_l4puh"]
+[ext_resource type="Texture2D" uid="uid://sinkwn0epg4k" path="res://Games/FlappyBird/Art/BirdoPlaceholder.png" id="6_3m4h1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xjopp"]
+radius = 169.189
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w4mva"]
+radius = 170.294
+
+[node name="Birdo" type="CharacterBody2D"]
+scale = Vector2(0.200001, 0.2)
+collision_mask = 4
+script = ExtResource("1_o6rv1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(15.6969, 16.5301)
+texture = ExtResource("6_3m4h1")
+
+[node name="BirdoFSM" parent="." instance=ExtResource("2_k5x2j")]
+InitialState = NodePath("BirdoPlayState")
+
+[node name="BirdCountDownState" type="Node" parent="BirdoFSM"]
+script = ExtResource("3_iw6x0")
+
+[node name="BirdoPlayState" type="Node" parent="BirdoFSM"]
+script = ExtResource("4_l4puh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_xjopp")
+
+[node name="HitboxComponent" parent="." instance=ExtResource("1_tpqjw")]
+collision_layer = 1
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("CircleShape2D_w4mva")

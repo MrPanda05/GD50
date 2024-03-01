@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://csrxlt2tufvyg"]
+
+[node name="Pipe" type="Node2D"]
+
+[node name="Marker2D" type="Marker2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
