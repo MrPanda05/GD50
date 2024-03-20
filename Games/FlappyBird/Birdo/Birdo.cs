@@ -10,13 +10,14 @@ namespace FlappyBird.Birdo
         [Export] private float jumpForce = 800f;
         [Export] private float gravity = 2500f;
 
-        private FSM GameFSM;
+        private FSM myFSM, gameFSM;
 
         private Vector2 vel;
 
         public override void _Ready()
         {
-            GameFSM = GetNode<FSM>("../../../%GameFSMBird");
+            gameFSM = GetNode<FSM>("../../GameFSM");
+            myFSM = GetNode<FSM>("BirdoFSM");
             vel = Velocity;
         }
         public void Jump()

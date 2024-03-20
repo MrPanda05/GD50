@@ -11,7 +11,5 @@ shape = SubResource("RectangleShape2D_ubtpv")
 disabled = true
 
 [node name="UpPipe" parent="." instance=ExtResource("1_30rw7")]
-position = Vector2(194, 134)
 
 [node name="DownPipe" parent="." instance=ExtResource("1_30rw7")]
-position = Vector2(194, 114)

@@ -1,29 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://c4y5wlslu6qah"]
+[gd_scene load_steps=2 format=3 uid="uid://c4y5wlslu6qah"]
 
-[ext_resource type="PackedScene" uid="uid://dvnp0wym3o3p1" path="res://Games/FlappyBird/FlappyBirdGame.tscn" id="1_ae5yw"]
 [ext_resource type="PackedScene" uid="uid://vyvxafwy0icu" path="res://Games/FlappyBird/UI/FlappyBirdMainMenu.tscn" id="2_it68f"]
-[ext_resource type="PackedScene" uid="uid://cihsxh283esp5" path="res://Commons/FSM/FSM.tscn" id="3_sem5x"]
-[ext_resource type="Script" path="res://Games/FlappyBird/States/TittleScreenState.cs" id="4_pp0k8"]
 
 [node name="FlappyBirdMain" type="Node2D"]
-
-[node name="FlappyBirdGame" parent="." instance=ExtResource("1_ae5yw")]
+editor_description = "Main Menu of flappy bird"
 
 [node name="FlappyBirdTittleScreem" parent="." instance=ExtResource("2_it68f")]
-
-[node name="GameFSMBird" parent="." groups=["FiniteStateMachines"] instance=ExtResource("3_sem5x")]
-unique_name_in_owner = true
-editor_description = "This has the following states!
-TittleScren => countdown => play => score => countDown"
-InitialState = NodePath("TittleScreenState")
-
-[node name="TittleScreenState" type="Node" parent="GameFSMBird"]
-script = ExtResource("4_pp0k8")
-
-[node name="CountdownState" type="Node" parent="GameFSMBird"]
-
-[node name="PlayState" type="Node" parent="GameFSMBird"]
-
-[node name="ScoreState" type="Node" parent="GameFSMBird"]
-
-[node name="PauseState" type="Node" parent="GameFSMBird"]
